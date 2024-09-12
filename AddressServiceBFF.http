@@ -1,0 +1,11 @@
+@AddressServiceBFF_HostAddress = http://localhost:5164
+
+GET {{AddressServiceBFF_HostAddress}}/todos/
+Accept: application/json
+
+###
+
+GET {{AddressServiceBFF_HostAddress}}/todos/1
+Accept: application/json
+
+###
