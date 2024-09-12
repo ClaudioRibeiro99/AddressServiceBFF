@@ -7,7 +7,6 @@ public static class BuilderExtensions
 {
     public static WebApplicationBuilder AddArchtectures(this WebApplicationBuilder builder)
     {
-        builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(c =>
         {

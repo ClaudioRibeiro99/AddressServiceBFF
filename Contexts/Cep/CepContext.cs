@@ -1,7 +1,9 @@
 ﻿using AddressServiceBFF.Interfaces;
 using AddressServiceBFF.Service;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using AddressServiceBFF.Contexts;
 
 namespace AddressServiceBFF.Contexts.Cep
 {
@@ -10,18 +12,13 @@ namespace AddressServiceBFF.Contexts.Cep
     {
         public static WebApplicationBuilder AddCepContext(this WebApplicationBuilder builder)
         {
-            //registro de serviços
-            //resolução de DI
-
             builder.Services.AddHttpClient<ICepService, CepService>();
-
+            
             return builder;
         }
-
+        
         public static WebApplication UseCepContext(this WebApplication app)
         {
-            //Mapeamento de Endpoints
-
             app.MapCepEndpoints();
 
             return app;
