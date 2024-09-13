@@ -1,8 +1,15 @@
+using AddressServiceBFF.Contexts.Bank;
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddCepContext().AddArchtectures();
+builder.AddCepContext()
+    .AddBankContext()
+    .AddArchtectures();
+
 var app = builder.Build();
 
-app.UseCepContext().UseArchtectures();
+app.UseCepContext()
+    .UseBankContext()
+    .UseArchtectures();
 
 app.Run();

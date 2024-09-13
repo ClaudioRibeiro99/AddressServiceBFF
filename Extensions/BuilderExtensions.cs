@@ -8,6 +8,7 @@ public static class BuilderExtensions
             .AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.TypeInfoResolver = AddressJsonContext.Default;
+                options.JsonSerializerOptions.TypeInfoResolver = BankJsonContext.Default;
             });
             
         builder.Services.AddEndpointsApiExplorer();
@@ -16,9 +17,9 @@ public static class BuilderExtensions
             c.SwaggerDoc(
                 "v1", new OpenApiInfo
                 {
-                    Title = "Cep Gateway BFF",
+                    Title = "Gateway BFF",
                     Version = "v1",
-                    Description = "API BFF que consulta uma API de CEP"
+                    Description = "API BFF que consulta o CEP e a Intituição Financeira"
                 });
         });
 
