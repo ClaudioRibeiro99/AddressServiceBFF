@@ -12,8 +12,13 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
-    <PackageReference Include="System.Text.Json" Version="8.0.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
     <RuntimeHostConfigurationOption Include="System.Text.Json.Serialization.EnableSourceGenReflectionFallback" Value="true" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Coordinates.cs" />
+    <Compile Remove="Models\Location.cs" />
   </ItemGroup>
 
 </Project>

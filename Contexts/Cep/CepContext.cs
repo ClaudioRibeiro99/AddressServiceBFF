@@ -1,11 +1,4 @@
-﻿using AddressServiceBFF.Interfaces;
-using AddressServiceBFF.Service;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics.CodeAnalysis;
-using System.Text.Json.Serialization;
-using AddressServiceBFF.Contexts;
-
-namespace AddressServiceBFF.Contexts.Cep
+﻿namespace AddressServiceBFF.Contexts.Cep
 {
     [JsonSerializable(typeof(ProblemDetails))]
     public static class CepContext

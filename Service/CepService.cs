@@ -1,29 +1,16 @@
-﻿using System.Text.Json;
-using AddressServiceBFF.Interfaces;
-using AddressServiceBFF.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Json.Serialization;
-using AddressServiceBFF.Contexts;
-
-namespace AddressServiceBFF.Service
+﻿namespace AddressServiceBFF.Service
 {
-    public class CepService : ICepService
+    public class CepService(HttpClient httpClient) : ICepService
     {
-        private readonly HttpClient _httpClient;
         private const string UrlViacep = "https://brasilapi.com.br/api/cep/v2/";
 
-        public CepService(HttpClient httpClient)
-        {
-            _httpClient = httpClient;
-        }
-
-        public async Task<(Address?, HttpResponseMessage)> GetAddressByCepAsync(string cep)
+        public async Task<(Address, HttpResponseMessage)> GetAddressByCepAsync(string cep)
         {
             var url = $"{UrlViacep}{cep}";
 
             try
             {
-                var response = await _httpClient.GetAsync(url);
+                var response = await httpClient.GetAsync(url);
                 
                 if (response.IsSuccessStatusCode)
                 {

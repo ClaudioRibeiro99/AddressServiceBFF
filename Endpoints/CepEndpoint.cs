@@ -1,12 +1,4 @@
-﻿using System.Text.Json;
-using AddressServiceBFF.Interfaces;
-using AddressServiceBFF.Service;
-using System.Text.Json.Serialization;
-using AddressServiceBFF.Contexts;
-using Microsoft.AspNetCore.Http.Json;
-using Microsoft.Extensions.Options;
-
-namespace AddressServiceBFF.Endpoints;
+﻿namespace AddressServiceBFF.Endpoints;
 
 public static class CepEndpoint
 {

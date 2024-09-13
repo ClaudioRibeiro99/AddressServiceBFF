@@ -1,9 +1,7 @@
-﻿using AddressServiceBFF.Models;
-
-namespace AddressServiceBFF.Interfaces
+﻿namespace AddressServiceBFF.Interfaces
 {
     public interface ICepService
     {
-        Task<(Address?, HttpResponseMessage)> GetAddressByCepAsync(string cep);
+        Task<(Address, HttpResponseMessage)> GetAddressByCepAsync(string cep);
     }
 }

@@ -1,12 +1,15 @@
-﻿using System.Runtime.CompilerServices;
-using System.Text.Json.Serialization;
-
-namespace AddressServiceBFF.Extensions;
+﻿namespace AddressServiceBFF.Extensions;
 
 public static class BuilderExtensions 
 {
     public static WebApplicationBuilder AddArchtectures(this WebApplicationBuilder builder)
     {
+        builder.Services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.TypeInfoResolver = AddressJsonContext.Default;
+            });
+            
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(c =>
         {
