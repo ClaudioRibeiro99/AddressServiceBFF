@@ -1,13 +1,15 @@
 ﻿global using AddressServiceBFF.Extensions;
 global using AddressServiceBFF.Contexts.Cep;
-global using AddressServiceBFF.Endpoints;
 global using Microsoft.OpenApi.Models;
 global using System.Text.Json;
-global using AddressServiceBFF.Interfaces;
 global using AddressServiceBFF.Contexts;
 global using Microsoft.Extensions.Options;
 global using System.Text.Json.Serialization;
 global using AddressServiceBFF.Models;
-global using AddressServiceBFF.Service;
 global using Microsoft.AspNetCore.Mvc;
 global using JsonOptions = Microsoft.AspNetCore.Http.Json.JsonOptions;
+global using AddressServiceBFF.Interfaces.Cep;
+global using AddressServiceBFF.Interfaces.Banks;
+global using AddressServiceBFF.Endpoints.Cep;
+global using AddressServiceBFF.Service.Cep;
+global using AddressServiceBFF.Service.Banks;

@@ -1,8 +1,14 @@
-﻿namespace AddressServiceBFF.Service
+﻿namespace AddressServiceBFF.Service.Cep
 {
-    public class CepService(HttpClient httpClient) : ICepService
+    public class CepService : ICepService
     {
+        private readonly HttpClient _httpClient;
         private const string UrlViacep = "https://brasilapi.com.br/api/cep/v2/";
+
+        public CepService(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
 
         public async Task<(Address, HttpResponseMessage)> GetAddressByCepAsync(string cep)
         {
@@ -10,8 +16,8 @@
 
             try
             {
-                var response = await httpClient.GetAsync(url);
-                
+                var response = await _httpClient.GetAsync(url);
+
                 if (response.IsSuccessStatusCode)
                 {
                     var responseMessage = await response.Content.ReadAsStringAsync();
@@ -27,7 +33,7 @@
 
                     return (address, response);
                 }
-                
+
                 return (null, response);
             }
             catch (HttpRequestException ex)

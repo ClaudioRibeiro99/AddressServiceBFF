@@ -1,6 +1,6 @@
-﻿namespace AddressServiceBFF.Endpoints;
+﻿namespace AddressServiceBFF.Endpoints.Cep;
 
-public static class CepEndpoint
+public static class BanksEndpoint
 {
     public static void MapCepEndpoints(this WebApplication app)
     {
@@ -15,7 +15,9 @@ public static class CepEndpoint
             }
 
             return Results.Problem(detail: response.ReasonPhrase, statusCode: (int)response.StatusCode);
-        });
+        })
+            .WithName("GetAddressCep")
+            .WithTags("Address");
 
     }
 }
