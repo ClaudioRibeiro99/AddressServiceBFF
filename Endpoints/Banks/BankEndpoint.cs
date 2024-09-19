@@ -18,19 +18,21 @@ public static class BankEndpoint
         })
             .WithName("GetBankCode")
             .WithTags("Bank");
-        
-        //app.MapGet("/bank-list", async (IBankService banksService, IOptions<JsonOptions> jsonOptions) =>
-        //{
-        //    var (bank, response) = await banksService.GetAllBanksAsync();
 
-        //    if (bank != null)
-        //    {
-        //        var jsonResult = JsonSerializer.Serialize(bank, BankJsonContext.Default.BankInstitution);
-        //        return Results.Content(jsonResult, "application/json");
-        //    }
+        app.MapGet("/bank-list", async (IBankService banksService, IOptions<JsonOptions> jsonOptions) =>
+        {
+            var (bank, response) = await banksService.GetAllBanksAsync();
 
-        //    return Results.Problem(detail: response.ReasonPhrase, statusCode: (int)response.StatusCode);
-        //});
+            if (bank != null)
+            {
+                var jsonResult = JsonSerializer.Serialize(bank, BankJsonContext.Default.ListBankInstitution);
+                return Results.Content(jsonResult, "application/json");
+            }
+
+            return Results.Problem(detail: response.ReasonPhrase, statusCode: (int)response.StatusCode);
+        })
+            .WithName("GetAllBanks")
+            .WithTags("Bank");
 
     }
 }

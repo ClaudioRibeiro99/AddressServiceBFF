@@ -1,7 +1,7 @@
 ﻿namespace AddressServiceBFF.Contexts;
 
 [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
-[JsonSerializable(typeof(BankInstitution))]
+[JsonSerializable(typeof(List<BankInstitution>))]
 internal partial class BankJsonContext : JsonSerializerContext
 {
 }

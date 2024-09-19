@@ -3,5 +3,5 @@
 public interface IBankService
 {
     Task<(BankInstitution, HttpResponseMessage)> GetBanksByCodeAsync(string code);
-    //Task<(BankInstitution, HttpResponseMessage)> GetAllBanksAsync();
+    Task<(ICollection<BankInstitution>, HttpResponseMessage)> GetAllBanksAsync();
 }
