@@ -51,4 +51,46 @@ public class BankService : IBankService
             });
         }
     }
+
+    public async Task<(ICollection<BankInstitution>, HttpResponseMessage)> GetAllBanksAsync()
+    {
+        var url = $"{UrlBanks}";
+
+        try
+        {
+            var response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseMessage = await response.Content.ReadAsStringAsync();
+                var banks = JsonSerializer.Deserialize<List<BankInstitution>>(responseMessage, BankJsonContext.Default.ListBankInstitution);
+
+                if (banks == null)
+                {
+                    return (null, new HttpResponseMessage(System.Net.HttpStatusCode.NotFound)
+                    {
+                        ReasonPhrase = "Instituição não encontrada"
+                    });
+                }
+
+                return (banks, response);
+            }
+
+            return (null, response);
+        }
+        catch (HttpRequestException ex)
+        {
+            return (null, new HttpResponseMessage(System.Net.HttpStatusCode.ServiceUnavailable)
+            {
+                ReasonPhrase = $"Erro de rede: {ex.Message}"
+            });
+        }
+        catch (Exception ex)
+        {
+            return (null, new HttpResponseMessage(System.Net.HttpStatusCode.InternalServerError)
+            {
+                ReasonPhrase = $"Erro inesperado: {ex.Message}"
+            });
+        }
+    }
 }
