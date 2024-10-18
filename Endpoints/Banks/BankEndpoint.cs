@@ -34,5 +34,19 @@ public static class BankEndpoint
             .WithName("GetAllBanks")
             .WithTags("Bank");
 
+        app.MapGet("/participants-pix-list", async (IBankService banksService, IOptions<JsonOptions> jsonOptions) =>
+        {
+            var (banksParticipants, response) = await banksService.GetAllParticipantsPixAsync();
+
+            if (banksParticipants != null)
+            {
+                var jsonResult = JsonSerializer.Serialize(banksParticipants, BankJsonContext.Default.ListParticipantsPix);
+                return Results.Content(jsonResult, "application/json");
+            }
+
+            return Results.Problem(detail: response.ReasonPhrase, statusCode: (int)response.StatusCode);
+        })
+            .WithName("GetAllParticipantsPix")
+            .WithTags("Bank");
     }
 }
