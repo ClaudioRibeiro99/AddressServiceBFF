@@ -106,7 +106,7 @@ public class BankService : IBankService
             if (response.IsSuccessStatusCode)
             {
                 var responseMessage = await response.Content.ReadAsStringAsync();
-                var banksParticipants = JsonSerializer.Deserialize<List<ParticipantsPix>>(responseMessage, ParticipantsPixJsonContext.Default.ListParticipantsPix);
+                var banksParticipants = JsonSerializer.Deserialize<List<ParticipantsPix>>(responseMessage, BankJsonContext.Default.ListParticipantsPix);
 
                 if (banksParticipants == null)
                 {

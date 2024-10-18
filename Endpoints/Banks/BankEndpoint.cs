@@ -40,13 +40,13 @@ public static class BankEndpoint
 
             if (banksParticipants != null)
             {
-                var jsonResult = JsonSerializer.Serialize(banksParticipants, ParticipantsPixJsonContext.Default.ListParticipantsPix);
+                var jsonResult = JsonSerializer.Serialize(banksParticipants, BankJsonContext.Default.ListParticipantsPix);
                 return Results.Content(jsonResult, "application/json");
             }
 
             return Results.Problem(detail: response.ReasonPhrase, statusCode: (int)response.StatusCode);
         })
             .WithName("GetAllParticipantsPix")
-            .WithTags("ParticipantsPix");
+            .WithTags("Bank");
     }
 }
